@@ -1,0 +1,44 @@
+﻿@model List<WebApp1.DAL.Entities.Department>
+
+@{
+    ViewData["Title"] = "Departments";
+}
+
+<div class="container mt-4">
+    <h2>All Departments</h2>
+    <table class="table table-bordered table-striped table-hover mt-3">
+        <thead class="table-dark">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Manager Name</th>
+                <th>Hire Date</th>
+                <th>Number of Courses</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var dept in Model)
+            {
+                <tr>
+                    <td>@dept.Id</td>
+                    <td>@dept.Name</td>
+                    <td>@(dept.Manager?.Name ?? "N/A")</td>
+                    <td>@(dept.Manager_HireDate?.ToString("yyyy-MM-dd") ?? "N/A")</td>
+                    <td>@dept.Courses.Count</td>
+                    <td>
+                        <a asp-controller="Department"
+                           asp-action="Instructors"
+                           asp-route-id="@dept.Id"
+                           class="btn btn-primary btn-sm">Show Instructors</a>
+
+                        <a asp-controller="Department"
+                           asp-action="Details"
+                           asp-route-id="@dept.Id"
+                           class="btn btn-info btn-sm text-white">Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

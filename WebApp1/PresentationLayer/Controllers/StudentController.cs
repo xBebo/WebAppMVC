@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApp1.DAL.Database;
 using WebApp1.DAL.Entities;
-namespace WebApp1.Controllers
+namespace WebApp1.PresentationLayer.Controllers
 {
     public class StudentController : Controller
     {

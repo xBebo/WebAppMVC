@@ -1,0 +1,54 @@
+﻿@model WebApp1.DAL.Entities.Department
+
+@{
+    ViewData["Title"] = "Department Details";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-primary text-white">
+            <h4>Department: @Model.Name</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row mb-0">
+                <dt class="col-sm-3">Manager Name:</dt>
+                <dd class="col-sm-9">@(Model.Manager?.Name ?? "N/A")</dd>
+
+                <dt class="col-sm-3">Hire Date:</dt>
+                <dd class="col-sm-9">@(Model.Manager_HireDate?.ToString("yyyy-MM-dd") ?? "N/A")</dd>
+            </dl>
+        </div>
+    </div>
+
+    <h4>Department Courses</h4>
+    <table class="table table-bordered mt-2">
+        <thead class="table-secondary">
+            <tr>
+                <th>Course ID</th>
+                <th>Course Name</th>
+                <th>Minimum Degree</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Courses.Any())
+            {
+                @foreach (var course in Model.Courses)
+                {
+                    <tr>
+                        <td>@course.Id</td>
+                        <td>@course.Name</td>
+                        <td>@course.MinDegree</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="3" class="text-center text-muted">No courses listed for this department.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a asp-controller="Department" asp-action="Index" class="btn btn-secondary mt-2">Back to Departments</a>
+</div>

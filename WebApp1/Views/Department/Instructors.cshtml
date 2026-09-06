@@ -1,0 +1,41 @@
+﻿@model List<WebApp1.DAL.Entities.Instructor>
+
+@{
+    ViewData["Title"] = "Department Instructors";
+}
+
+<div class="container mt-4">
+    <h2>Instructors List</h2>
+    <table class="table table-bordered table-striped mt-3">
+        <thead class="table-dark">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Any())
+            {
+                @foreach (var inst in Model)
+                {
+                    <tr>
+                        <td>@inst.Id</td>
+                        <td>@inst.Name</td>
+                        <td>@inst.Address</td>
+                        <td>@inst.Salary.ToString("C")</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4" class="text-center text-muted">No instructors found in this department.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a asp-controller="Department" asp-action="Index" class="btn btn-secondary">Back to Departments</a>
+</div>

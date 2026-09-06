@@ -1,4 +1,4 @@
-namespace WebApp1
+namespace WebApp1.PresentationLayer
 {
     public class Program
     {
