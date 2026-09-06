@@ -1,3 +1,7 @@
 <Solution>
-  <Project Path="WebApp1/WebApp1.csproj" />
+  <Folder Name="/WebApp1/">
+    <Project Path="WebApp1/BLogicLayer/BLogicLayer.csproj" />
+    <Project Path="WebApp1/DAL/DAL.csproj" />
+    <Project Path="WebApp1/PresentationLayer/PresentationLayer.csproj" />
+  </Folder>
 </Solution>

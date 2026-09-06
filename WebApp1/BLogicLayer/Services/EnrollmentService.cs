@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using System.Text;
 using WebApp1.DAL.Database;
 using WebApp1.DAL.Entities;
+
 namespace WebApp1.BLogicLayer.Services
 {
-    public class InstructorService
+    public class EnrollmentService
     {
         private readonly AppDbContext _context = new AppDbContext();
 
-        public List<Instructor> GetByDeptId(int deptId)
+        public List<Enrollment> GetAll()
         {
-            return _context.Instructors
-                .Where(i => i.DeptId == deptId)
-                .ToList();
+            return _context.Enrollments.ToList();
         }
     }
 }

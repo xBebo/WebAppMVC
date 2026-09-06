@@ -30,9 +30,9 @@
             </tr>
         </thead>
         <tbody>
-            @if (Model.Courses.Any())
+            @if (Model.Courses != null && Model.Courses.Any())
             {
-                @foreach (var course in Model.Courses)
+                @foreach (var course in Model.Courses ?? [])
                 {
                     <tr>
                         <td>@course.Id</td>

@@ -23,7 +23,9 @@
                     <td>@student.Name</td>
                     @* <td>@student.GPA</td> *@
                     <td>
-                        <a href="/Students/details?id=@student.Id" class="btn btn-primary btn-sm">Details</a>
+                        <a asp-controller="Student" asp-action="Details" asp-route-id="@student.Id" class="btn btn-primary">
+                            Details
+                        </a>
                     </td>z
                 </tr>
             }

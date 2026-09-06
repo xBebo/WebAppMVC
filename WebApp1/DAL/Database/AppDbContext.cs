@@ -19,10 +19,14 @@ namespace WebApp1.DAL.Database
         {
             base.OnModelCreating(modelBuilder);
 
+            //18 digits, 2 decimal places
+            modelBuilder.Entity<Instructor>()
+    .Property(i => i.Salary)
+    .HasPrecision(18, 2);
+
             // Composite primary key for Enrollment
             modelBuilder.Entity<Enrollment>()
                 .HasKey(e => new { e.StudentId, e.CourseId });
-
 
             // Department -> Instructors (One -> Many)
             modelBuilder.Entity<Instructor>()
@@ -34,8 +38,8 @@ namespace WebApp1.DAL.Database
             // Department -> Manager (One-to-One / Zero-to-One)
             modelBuilder.Entity<Department>()
                 .HasOne(d => d.Manager)
-                .WithMany()
-                .HasForeignKey(d => d.ManagerId)
+                .WithOne()
+                .HasForeignKey<Department>(d => d.ManagerId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Department>().HasData(
