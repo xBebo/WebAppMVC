@@ -1,0 +1,28 @@
+﻿@model WebApp1.DAL.Entities.Student
+
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+<div class="container mt-4">
+    <div class="card col-md-6 offset-md-3 shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h4>Student Details</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row mb-0">
+                <dt class="col-sm-4">ID:</dt>
+                <dd class="col-sm-8">@Model.Id</dd>
+
+                <dt class="col-sm-4">Name:</dt>
+                <dd class="col-sm-8">@Model.Name</dd>
+
+                @* <dt class="col-sm-4">GPA:</dt>
+                <dd class="col-sm-8">@Model.GPA</dd> *@
+            </dl>
+        </div>
+        <div class="card-footer">
+            <a href="/Student" class="btn btn-secondary btn-sm">Back to List</a>
+        </div>
+    </div>
+</div>
