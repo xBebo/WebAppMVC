@@ -1,11 +1,18 @@
-﻿@model List<WebApp1.DAL.Entities.Department>
-
+﻿@model List<WebApp1.BLogicLayer.ViewModels.DepartmentListViewModel>
 @{
     ViewData["Title"] = "Departments";
 }
 
 <div class="container mt-4">
     <h2>All Departments</h2>
+    @if (User.IsInRole("Admin"))
+    {
+        <a asp-controller="Department"
+           asp-action="Create"
+           class="btn btn-primary mb-3">
+            Add Department
+        </a>
+    }
     <table class="table table-bordered table-striped table-hover mt-3">
         <thead class="table-dark">
             <tr>
@@ -23,9 +30,9 @@
                 <tr>
                     <td>@dept.Id</td>
                     <td>@dept.Name</td>
-                    <td>@(dept.Manager?.Name ?? "N/A")</td>
-                    <td>@(dept.Manager_HireDate?.ToString("yyyy-MM-dd") ?? "N/A")</td>
-                    <td>@(dept.Courses?.Count ?? 0)</td>
+                    <td>@(dept.ManagerName ?? "N/A")</td>
+                    <td>@(dept.ManagerHireDate?.ToString("yyyy-MM-dd") ?? "N/A")</td>
+                    <td>@(dept.CoursesCount)</td>
                     <td>
                         <a asp-controller="Department"
                            asp-action="Instructors"
@@ -36,6 +43,16 @@
                            asp-action="Details"
                            asp-route-id="@dept.Id"
                            class="btn btn-info btn-sm text-white">Details</a>
+                        
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-controller="Department"
+                               asp-action="Delete"
+                               asp-route-id="@dept.Id"
+                               class="btn btn-danger">
+                                Delete
+                            </a>
+                        }
                     </td>
                 </tr>
             }

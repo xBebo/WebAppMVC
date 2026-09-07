@@ -1,0 +1,33 @@
+﻿@model WebApp1.DAL.Entities.Enrollment
+
+<h2>Delete Enrollment</h2>
+
+<p>Are you sure you want to delete this enrollment?</p>
+
+<p><strong>Student Id:</strong> @Model.StudentId</p>
+<p><strong>Course Id:</strong> @Model.CourseId</p>
+<p><strong>Grade:</strong> @Model.Grade</p>
+<p><strong>Degree:</strong> @Model.Degree</p>
+
+<form asp-controller="Enrollment"
+      asp-action="DeleteConfirmed"
+      method="post">
+
+    <input type="hidden"
+           name="studentId"
+           value="@Model.StudentId" />
+
+    <input type="hidden"
+           name="courseId"
+           value="@Model.CourseId" />
+
+    <button type="submit"
+            class="btn btn-danger">
+        Delete
+    </button>
+
+    <a asp-action="Index"
+       class="btn btn-secondary">
+        Cancel
+    </a>
+</form>

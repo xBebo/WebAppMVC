@@ -1,0 +1,28 @@
+﻿@model WebApp1.BLogicLayer.ViewModels.InstructorViewModel
+
+<h2>Delete Instructor</h2>
+
+<p>Are you sure you want to delete this instructor?</p>
+
+<p><strong>Name:</strong> @Model.Name</p>
+<p><strong>Address:</strong> @Model.Address</p>
+<p><strong>Salary:</strong> @Model.Salary</p>
+
+<form asp-controller="Instructor"
+      asp-action="DeleteConfirmed"
+      method="post">
+
+    <input type="hidden"
+           name="id"
+           value="@Model.Id" />
+
+    <button type="submit"
+            class="btn btn-danger">
+        Delete
+    </button>
+
+    <a asp-action="Index"
+       class="btn btn-secondary">
+        Cancel
+    </a>
+</form>

@@ -1,0 +1,61 @@
+﻿@model WebApp1.BLogicLayer.ViewModels.AddDepartmentView
+
+<h2>Add Department</h2>
+
+<form asp-controller="Department"
+      asp-action="Create"
+      method="post">
+
+    <div asp-validation-summary="All"
+         class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Name"
+               class="form-label"></label>
+
+        <input asp-for="Name"
+               class="form-control" />
+
+        <span asp-validation-for="Name"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ManagerId"
+               class="form-label">
+            Manager
+        </label>
+
+        <select asp-for="ManagerId"
+                asp-items="ViewBag.Instructors"
+                class="form-select">
+        </select>
+
+        <span asp-validation-for="ManagerId"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ManagerHireDate"
+               class="form-label">
+            Manager Hire Date
+        </label>
+
+        <input asp-for="ManagerHireDate"
+               type="date"
+               class="form-control" />
+
+        <span asp-validation-for="ManagerHireDate"
+              class="text-danger"></span>
+    </div>
+
+    <button type="submit"
+            class="btn btn-primary">
+        Add
+    </button>
+
+    <a asp-action="Index"
+       class="btn btn-secondary">
+        Back
+    </a>
+</form>

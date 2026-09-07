@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "State Management Demo";
+}
+
+<h1>State Management Demo</h1>
+
+<hr />
+
+<h2>TempData</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Success"]
+    </div>
+}
+
+@if (ViewBag.PeekedMessage != null)
+{
+    <div class="alert alert-info">
+        Peek result: @ViewBag.PeekedMessage
+    </div>
+}
+
+<a asp-controller="State"
+   asp-action="SetTempData"
+   class="btn btn-primary">
+    Set TempData
+</a>
+
+<a asp-controller="State"
+   asp-action="PeekTempData"
+   class="btn btn-secondary">
+    Peek TempData
+</a>
+
+<hr />
+
+<h2>Cookie</h2>
+
+<p>
+    Cookie UserName:
+    @(ViewBag.CookieUserName ?? "Not set")
+</p>
+
+<a asp-controller="State"
+   asp-action="SetCookie"
+   class="btn btn-primary">
+    Set Cookie
+</a>
+
+<hr />
+
+<h2>Session</h2>
+
+<p>
+    Session UserId:
+    @(ViewBag.SessionUserId ?? "Not set")
+</p>
+
+<a asp-controller="State"
+   asp-action="SetSession"
+   class="btn btn-primary">
+    Set Session
+</a>

@@ -1,11 +1,14 @@
-﻿@model IEnumerable<Student>
-
+﻿@model List<WebApp1.BLogicLayer.ViewModels.StudentViewModel>
 @{
     ViewData["Title"] = "Student List";
 }
-
 <div class="container mt-4">
     <h2>Student List</h2>
+    <a asp-controller="Student"
+       asp-action="Create"
+       class="btn btn-primary mb-3">
+        Add Student
+    </a>
     <table class="table table-bordered table-striped mt-3">
         <thead class="table-dark">
             <tr>
@@ -23,10 +26,20 @@
                     <td>@student.Name</td>
                     @* <td>@student.GPA</td> *@
                     <td>
-                        <a asp-controller="Student" asp-action="Details" asp-route-id="@student.Id" class="btn btn-primary">
+                        <a asp-controller="Student"
+                           asp-action="Details"
+                           asp-route-id="@student.Id"
+                           class="btn btn-primary">
                             Details
                         </a>
-                    </td>z
+
+                        <a asp-controller="Student"
+                           asp-action="Delete"
+                           asp-route-id="@student.Id"
+                           class="btn btn-danger">
+                            Delete
+                        </a>
+                    </td>
                 </tr>
             }
         </tbody>

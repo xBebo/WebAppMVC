@@ -1,0 +1,67 @@
+﻿@model WebApp1.BLogicLayer.ViewModels.AddEnrollmentView
+
+<h2>Add Enrollment</h2>
+
+<form asp-controller="Enrollment"
+      asp-action="Create"
+      method="post">
+
+    <div asp-validation-summary="All"
+         class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="StudentId"
+               class="form-label">
+            Student
+        </label>
+
+        <select asp-for="StudentId"
+                asp-items="ViewBag.Students"
+                class="form-select">
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CourseId"
+               class="form-label">
+            Course
+        </label>
+
+        <select asp-for="CourseId"
+                asp-items="ViewBag.Courses"
+                class="form-select">
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Grade"
+               class="form-label"></label>
+
+        <input asp-for="Grade"
+               class="form-control" />
+
+        <span asp-validation-for="Grade"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Degree"
+               class="form-label"></label>
+
+        <input asp-for="Degree"
+               class="form-control" />
+
+        <span asp-validation-for="Degree"
+              class="text-danger"></span>
+    </div>
+
+    <button type="submit"
+            class="btn btn-primary">
+        Add
+    </button>
+
+    <a asp-action="Index"
+       class="btn btn-secondary">
+        Back
+    </a>
+</form>

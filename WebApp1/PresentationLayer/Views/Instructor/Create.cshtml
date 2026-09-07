@@ -1,0 +1,69 @@
+﻿@model WebApp1.BLogicLayer.ViewModels.AddInstructorView
+
+<h2>Add Instructor</h2>
+
+<form asp-controller="Instructor"
+      asp-action="Create"
+      method="post">
+
+    <div asp-validation-summary="All"
+         class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Name"
+               class="form-label"></label>
+
+        <input asp-for="Name"
+               class="form-control" />
+
+        <span asp-validation-for="Name"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Address"
+               class="form-label"></label>
+
+        <input asp-for="Address"
+               class="form-control" />
+
+        <span asp-validation-for="Address"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Salary"
+               class="form-label"></label>
+
+        <input asp-for="Salary"
+               class="form-control" />
+
+        <span asp-validation-for="Salary"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DeptId"
+               class="form-label">
+            Department
+        </label>
+
+        <select asp-for="DeptId"
+                asp-items="ViewBag.Departments"
+                class="form-select">
+        </select>
+
+        <span asp-validation-for="DeptId"
+              class="text-danger"></span>
+    </div>
+
+    <button type="submit"
+            class="btn btn-primary">
+        Add
+    </button>
+
+    <a asp-action="Index"
+       class="btn btn-secondary">
+        Back
+    </a>
+</form>

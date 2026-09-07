@@ -1,0 +1,40 @@
+﻿@model List<WebApp1.BLogicLayer.ViewModels.EnrollmentViewModel>
+
+<h2>Enrollment List</h2>
+
+<a asp-controller="Enrollment"
+   asp-action="Create"
+   class="btn btn-primary mb-3">
+    Add Enrollment
+</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Student</th>
+            <th>Course</th>
+            <th>Grade</th>
+            <th>Degree</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var enrollment in Model)
+        {
+            <tr>
+                <td>@enrollment.StudentName</td>
+                <td>@enrollment.CourseName</td>
+                <td>@enrollment.Grade</td>
+                <td>@enrollment.Degree</td>
+                <td>
+                    <a asp-controller="Enrollment"
+                       asp-action="Delete"
+                       asp-route-studentId="@enrollment.StudentId"
+                       asp-route-courseId="@enrollment.CourseId"
+                       class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

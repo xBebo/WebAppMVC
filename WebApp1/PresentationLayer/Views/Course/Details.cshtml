@@ -1,0 +1,33 @@
+﻿@model WebApp1.BLogicLayer.ViewModels.CourseViewModel
+
+<h2>Course Details</h2>
+
+<p><strong>Name:</strong> @Model.Name</p>
+
+<p>
+    <strong>Minimum Degree:</strong>
+    @Model.MinDegree
+</p>
+
+<p>
+    <strong>Department:</strong>
+    @(Model.DepartmentName ?? "N/A")
+</p>
+
+<p>
+    <strong>Instructor:</strong>
+    @(Model.InstructorName ?? "N/A")
+</p>
+
+<a asp-controller="Enrollment"
+   asp-action="Create"
+   asp-route-courseId="@Model.Id"
+   class="btn btn-primary">
+    Enroll
+</a>
+
+<a asp-controller="Department"
+   asp-action="Index"
+   class="btn btn-secondary">
+    Back
+</a>

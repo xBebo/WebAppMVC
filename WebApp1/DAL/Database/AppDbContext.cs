@@ -1,13 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using WebApp1.DAL.Entities;
 
 namespace WebApp1.DAL.Database
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<User>
     {
-        override protected void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        // EF gives the database settings to this context through Dependency Injection.
+        public AppDbContext(DbContextOptions<AppDbContext> options)
+            : base(options)
         {
-            optionsBuilder.UseSqlServer("Server=localhost;Database=WebApp1Db;Trusted_Connection=True;TrustServerCertificate=True;");
         }
         public DbSet<Student> Students { get; set; }
         public DbSet<Department> Departments { get; set; }
@@ -19,7 +21,6 @@ namespace WebApp1.DAL.Database
         {
             base.OnModelCreating(modelBuilder);
 
-            //18 digits, 2 decimal places
             modelBuilder.Entity<Instructor>()
     .Property(i => i.Salary)
     .HasPrecision(18, 2);

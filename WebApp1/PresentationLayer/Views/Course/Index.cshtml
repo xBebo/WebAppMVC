@@ -1,0 +1,39 @@
+﻿@model List<WebApp1.BLogicLayer.ViewModels.CourseViewModel>
+
+<h2>Course List</h2>
+
+<a asp-controller="Course"
+   asp-action="Create"
+   class="btn btn-primary mb-3">
+    Add Course
+</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Minimum Degree</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var course in Model)
+        {
+            <tr>
+                <td>@course.Id</td>
+                <td>@course.Name</td>
+                <td>@course.MinDegree</td>
+                <td>
+                    <a asp-controller="Course"
+                       asp-action="Delete"
+                       asp-route-id="@course.Id"
+                       class="btn btn-danger">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
