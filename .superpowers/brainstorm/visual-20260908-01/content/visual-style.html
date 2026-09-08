@@ -1,0 +1,75 @@
+<style>
+  .direction-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; margin-top:24px; }
+  .direction { border:2px solid #dfe3ea; border-radius:20px; overflow:hidden; cursor:pointer; background:#fff; transition:.2s ease; box-shadow:0 16px 36px rgba(15,23,42,.08); }
+  .direction:hover { transform:translateY(-4px); box-shadow:0 22px 46px rgba(15,23,42,.14); }
+  .direction.selected { border-color:#2563eb; box-shadow:0 0 0 4px rgba(37,99,235,.12),0 22px 46px rgba(15,23,42,.14); }
+  .preview { min-height:350px; padding:18px; }
+  .mini-nav { display:flex; align-items:center; justify-content:space-between; padding:12px 14px; border-radius:13px; font-size:11px; font-weight:700; }
+  .mini-links { display:flex; gap:10px; opacity:.8; }
+  .hero { margin:18px 0; padding:24px 18px; border-radius:16px; }
+  .eyebrow { font-size:9px; letter-spacing:.14em; text-transform:uppercase; font-weight:800; }
+  .hero h4 { margin:8px 0 6px; font-size:23px; line-height:1.05; }
+  .hero p { margin:0; font-size:11px; opacity:.7; }
+  .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:14px; }
+  .stat { padding:12px 10px; border-radius:12px; }
+  .stat strong { display:block; font-size:18px; }
+  .stat span { font-size:9px; opacity:.65; }
+  .mini-table { padding:13px; border-radius:14px; }
+  .row { display:grid; grid-template-columns:1.2fr 1fr .7fr; gap:8px; padding:8px 2px; border-bottom:1px solid currentColor; border-color:rgba(127,127,127,.18); font-size:9px; }
+  .row.head { font-weight:800; text-transform:uppercase; letter-spacing:.08em; }
+  .direction-copy { padding:18px 20px 22px; border-top:1px solid #e5e7eb; }
+  .direction-copy h3 { margin:0 0 6px; }
+  .direction-copy p { margin:0; color:#64748b; font-size:14px; line-height:1.5; }
+  .badge { display:inline-block; margin-top:12px; padding:5px 9px; border-radius:999px; font-size:11px; font-weight:800; background:#eef2ff; color:#3730a3; }
+  .academic { background:#f4f0e8; color:#183153; }
+  .academic .mini-nav { background:#183153; color:#fffaf0; }
+  .academic .hero { background:#e4d8c6; border-left:5px solid #d66b45; }
+  .academic .stat,.academic .mini-table { background:#fffaf2; }
+  .academic .eyebrow { color:#b34d2d; }
+  .midnight { background:#101619; color:#e7f2ed; }
+  .midnight .mini-nav { background:#1a2427; border:1px solid #304044; }
+  .midnight .hero { background:linear-gradient(135deg,#1b292b,#22383a); border:1px solid #335054; }
+  .midnight .stat,.midnight .mini-table { background:#182124; border:1px solid #2b393d; }
+  .midnight .eyebrow,.midnight strong { color:#b7ef5a; }
+  .campus { background:#f7f8f3; color:#263a32; }
+  .campus .mini-nav { background:#e0eadf; color:#263a32; }
+  .campus .hero { background:#cdddc9; border-radius:28px 8px 28px 8px; }
+  .campus .stat,.campus .mini-table { background:#ffffff; box-shadow:0 7px 20px rgba(53,87,70,.08); }
+  .campus .eyebrow { color:#a8553a; }
+  @media(max-width:900px){.direction-grid{grid-template-columns:1fr}}
+</style>
+
+<h2>Choose the visual direction</h2>
+<p class="subtitle">All three keep your existing ASP.NET MVC routes, forms, validation, and role checks unchanged. Click the one you want me to build.</p>
+
+<div class="direction-grid">
+  <div class="direction" data-choice="academic-ledger" onclick="toggleSelect(this)">
+    <div class="preview academic">
+      <div class="mini-nav"><span>CAMPUS LEDGER</span><div class="mini-links"><span>Departments</span><span>Enrollments</span><span>Login</span></div></div>
+      <div class="hero"><div class="eyebrow">Academic operations</div><h4>Everything your campus needs, clearly organized.</h4><p>A warm editorial dashboard with confident hierarchy.</p></div>
+      <div class="stats"><div class="stat"><strong>05</strong><span>Departments</span></div><div class="stat"><strong>12</strong><span>Courses</span></div><div class="stat"><strong>28</strong><span>Students</span></div></div>
+      <div class="mini-table"><div class="row head"><span>Department</span><span>Manager</span><span>Courses</span></div><div class="row"><span>Computer Science</span><span>Osama</span><span>4</span></div><div class="row"><span>Operating Systems</span><span>Ahmed</span><span>3</span></div></div>
+    </div>
+    <div class="direction-copy"><h3>A. Academic Ledger</h3><p>Warm ivory, deep navy, and clay accents. Professional, distinctive, and easiest to explain in your recording.</p><span class="badge">Recommended</span></div>
+  </div>
+
+  <div class="direction" data-choice="midnight-console" onclick="toggleSelect(this)">
+    <div class="preview midnight">
+      <div class="mini-nav"><span>EDU//CORE</span><div class="mini-links"><span>Departments</span><span>Enrollments</span><span>Login</span></div></div>
+      <div class="hero"><div class="eyebrow">System online</div><h4>Academic data at a glance.</h4><p>A focused interface inspired by technical control rooms.</p></div>
+      <div class="stats"><div class="stat"><strong>05</strong><span>Departments</span></div><div class="stat"><strong>12</strong><span>Courses</span></div><div class="stat"><strong>28</strong><span>Students</span></div></div>
+      <div class="mini-table"><div class="row head"><span>Department</span><span>Manager</span><span>Courses</span></div><div class="row"><span>Computer Science</span><span>Osama</span><span>4</span></div><div class="row"><span>Operating Systems</span><span>Ahmed</span><span>3</span></div></div>
+    </div>
+    <div class="direction-copy"><h3>B. Midnight Console</h3><p>Dark graphite with electric lime. Memorable and modern, but more dramatic for a coursework project.</p></div>
+  </div>
+
+  <div class="direction" data-choice="soft-campus" onclick="toggleSelect(this)">
+    <div class="preview campus">
+      <div class="mini-nav"><span>Northstar Campus</span><div class="mini-links"><span>Departments</span><span>Enrollments</span><span>Login</span></div></div>
+      <div class="hero"><div class="eyebrow">Welcome back</div><h4>Your academic workspace.</h4><p>Friendly forms and approachable data views.</p></div>
+      <div class="stats"><div class="stat"><strong>05</strong><span>Departments</span></div><div class="stat"><strong>12</strong><span>Courses</span></div><div class="stat"><strong>28</strong><span>Students</span></div></div>
+      <div class="mini-table"><div class="row head"><span>Department</span><span>Manager</span><span>Courses</span></div><div class="row"><span>Computer Science</span><span>Osama</span><span>4</span></div><div class="row"><span>Operating Systems</span><span>Ahmed</span><span>3</span></div></div>
+    </div>
+    <div class="direction-copy"><h3>C. Soft Campus</h3><p>Sage, cream, and terracotta with rounded forms. Friendly and polished, though less formal than option A.</p></div>
+  </div>
+</div>
